@@ -1,0 +1,937 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Restoran - Bootstrap Restaurant Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <!-- {% load static %} -->
+    <!-- Favicon-->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon"> 
+
+    <!-- Google Web Fonts -->
+     <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+   <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap' %}" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css' %}" rel="stylesheet">
+     <link href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+     <link href="{% static 'animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/owl.carousel.min.css' %}" rel="stylesheet"> 
+    <link href="{% static 'tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <!-- <link href="{% static 'css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}"/>
+
+    <!-- Template Stylesheet -->
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="{% static 'sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ' %}" crossorigin="anonymous">
+     
+</head>
+<script src="{% static 'main.js' %}"></script>  
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+
+
+ .containerrr {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    padding: 10px;
+    gap: 2em;
+    max-width: 1440px;
+    margin: auto;
+} 
+
+.card {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card .header {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    gap: 10px;
+}
+
+.card > * {
+    padding: 10px;
+    line-height: 1.5;
+}
+
+.card .header .name {
+    font-size: 1.2em;
+}
+
+.card .avatar {
+    border-radius: 50%;
+}
+
+.card .title {
+    font-size: 1.7em;
+}
+
+.card .status {
+    color: inherit;
+    opacity: 0.5;
+}
+
+.card .quote {
+    font-size: 1.1em;
+    color: inherit;
+    opacity: 0.7;
+}
+
+.card .quote::before {
+    content: open-quote;
+}
+
+.card .quote::after {
+    content: close-quote;
+}
+
+.card:nth-of-type(1) {
+    background: hsl(204, 24%, 16%);
+    color: hsl(0, 0%, 100%);
+    grid-column: 1 / 3;
+    background-image: url('https://assets.codepen.io/5126815/bg-pattern-quotation.svg');
+    background-repeat: no-repeat;
+    background-position: 80% 0%;
+}
+
+.card:nth-of-type(2) {
+    background: hsl(217, 19%, 35%);
+    color: hsl(0, 0%, 100%);
+}
+
+.card:nth-of-type(5) {
+    background: hsl(0, 0%, 100%);
+    grid-column: 4;
+    grid-row: 1 / 3;
+}
+
+.card:nth-of-type(3) {
+    background: hsl(218, 27%, 12%);
+}
+
+.card:nth-of-type(4) {
+    background: hsl(219, 29%, 14%);
+    color: hsl(0, 0%, 100%);
+    grid-column: 2 / 4;
+}
+
+@media(max-width: 800px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.slider {
+  position: relative;
+}
+
+.slider__container {
+  cursor: grab;
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.slider__container.dragging {
+  scroll-behavior: auto;
+  cursor: grabbing;
+}
+
+.slider__container::-webkit-scrollbar {
+  display: none;
+}
+
+.slider__item {
+  padding: 16px 8px;
+  flex: 0 0 auto;
+  width: calc(100% / 5);
+}
+
+.slider__container[data-step="4"] .slider__item {
+  width: calc(100% / 4);
+}
+
+.slider__container[data-step="3"] .slider__item {
+  width: calc(100% / 3);
+}
+
+.slider__container[data-step="2"] .slider__item {
+  width: calc(100% / 2);
+}
+
+.slider__container[data-step="1"] .slider__item {
+  width: calc(100% / 1);
+}
+
+@media screen and (max-width: 1024px) {
+  .slider__item,
+  .slider__container[data-step="4"] .slider__item {
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slider__item,
+  .slider__container[data-step="4"] .slider__item,
+  .slider__container[data-step="3"] .slider__item {
+    width: calc(100% / 2);
+  }
+}
+@media screen and (max-width: 480px) {
+  .slider__item,
+  .slider__container[data-step="4"] .slider__item,
+  .slider__container[data-step="3"] .slider__item,
+  .slider__container[data-step="2"] .slider__item {
+    width: calc(100% / 1);
+  }
+}
+
+.slider__control {
+  font-size: 16px;
+  border: .5px solid #000;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  opacity: .5;
+  transition: all .3s;
+}
+
+.slider__control.prev {
+  left: 16px;
+}
+
+.slider__control.next {
+  right: 16px;
+}
+
+.slider__control:hover {
+  opacity: 1;
+}
+
+.slider__item img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-select: none;
+}
+
+</style>
+<body>
+    <!-- <div class="container-xxl bg-white p-0"> -->
+        <!-- Spinner Start -->
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div> -->
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="http://localhost:8000/foodforall/index/" class="nav-item nav-link active">Home</a>
+                        <a href="http://localhost:8000/foodforall/about/" class="nav-item nav-link">About</a>
+                        <a href="http://localhost:8000/foodforall/orders/" class="nav-item nav-link">Service</a>
+                        <a href="http://localhost:8000/foodforall/menu/" class="nav-item nav-link">Menu</a>
+                        <a href="http://localhost:8000/foodforall/review/" class="nav-item nav-link">Testimonials</a>
+                        <a href="http://localhost:8000/foodforall/contact/" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <a href="http://localhost:8000/foodforall/booking/" class="btn btn-primary py-2 px-4">Book A Table</a>
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container my-5 py-5">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="display-3 text-white animated slideInLeft">Enjoy Our<br>Delicious Meal</h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">The best place to rejoice a wide variety of cuisines under a single roof with your loved ones,to soak in a peaceful and relaxing environment and leave with a desire to revisit as once is never enough.</p>
+                            <a href="http://localhost:8000/foodforall/booking/" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+                            <img class="img-fluid" src="{% static 'img/hero.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- Service Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4">
+                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                                <h5>Master Chefs</h5>
+                                <p>We offer you the best tastes having the best and well-known master chefs all around the world.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4">
+                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
+                                <h5>Quality Food</h5>
+                                <p>We're known for our best quality all over the town.Our tastes will convince you to try more.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4">
+                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
+                                <h5>Online Order</h5>
+                                <p>All these delicacies are just an order away from you.Call us or order online.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4">
+                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
+                                <h5>24/7 Service</h5>
+                                <p>Our team is there 24/7 for your orders,queries and all kind of support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service End -->
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="{% static 'img/about-1.jpg' %}">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="{% static 'img/about-2.jpg' %}" style="margin-top: 25%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="{% static 'img/about-3.jpg' %}">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="{% static 'img/about-4.jpg' %}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
+                        <h1 class="mb-4">Welcome to <i class="fa fa-utensils text-primary me-2"></i>Restoran</h1>
+                        <p class="mb-4">We offer you the best tastes from all around the world with warmth of service rarely experienced which is perfect to rejoice with family.</p>
+                        <p class="mb-4">Celebrate your everything with our exquisite and creative cuisines and highly professionaland and cooperative staff.</p>
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center border-start border-5 border-primary px-3">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15</h1>
+                                    <div class="ps-4">
+                                        <p class="mb-0">Years of</p>
+                                        <h6 class="text-uppercase mb-0">Experience</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center border-start border-5 border-primary px-3">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
+                                    <div class="ps-4">
+                                        <p class="mb-0">Popular</p>
+                                        <h6 class="text-uppercase mb-0">Master Chefs</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+      
+<h1 style="left: 35%; position: relative;">FEATURED PRODUCTS</h1>
+        <section class="slider">
+            <button class="slider__control prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider__control next"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="slider__container" data-multislide="true" data-step="4">
+                {% for fea in feature %}
+              <div class="slider__item">
+                <img style="height: 20em; width: 20em;" src="../../{{fea.picture}}" alt="" width="100%">
+                <h3>{{fea.dish_name}}</h3>
+                <small>${{fea.dish_price}}</small>
+              </div>
+            
+              {% endfor %}
+            </div>
+          </section>
+
+
+
+       
+       
+
+        <!-- Reservation Start -->
+        <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <div class="video">
+                        <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 bg-dark d-flex align-items-center">
+                    <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
+                        <h1 class="text-white mb-4">Book A Table Online</h1>
+                        <form id="form" class="form" name="myForm" onsubmit="return validation()">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <label for="name">Your Name</label>
+                                        <small></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <label for="email">Your Email</label>
+                                        <small id="emailerror"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                        <label for="datetime">Date & Time</label>
+                                        <small id="dterror"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="select1">
+                                          <option value="1">People 6</option>
+                                          <option value="2">People 8</option>
+                                          <option value="3">People 10</option>
+                                          <option value="3">People 12</option>
+                                          <option value="3">People 14</option>
+                                          <option value="3">People 15</option>
+                                          <option value="3">People 20</option>
+                                          <option value="3">People 25</option>
+                                        </select>
+                                        <label for="select1">No Of People</label>
+                                        
+                                      </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Special Request</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="ratio ratio-16x9">
+                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                                allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Reservation Start -->
+
+        
+        <!-- Team Start -->
+        <!-- <div class="container-xxl pt-5 pb-3">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
+                    <h1  class="mb-5">Our Master Chefs</h1>
+                </div>
+                
+                <div  class="row g-4">
+                    
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        
+                        <div  class="team-item text-center rounded overflow-hidden">
+                            {% for member in params.teams %}
+                            <div class="rounded-circle overflow-hidden m-4">
+                                <img class="img-fluid" src=../../{{member.image}} alt="">
+                                <!-- <p>{{member.image}}</p> -->
+                            <!-- </div>
+                            
+                            <h5 class="mb-0">{{member.first_name}}</h5>
+                            <small>{{member.designation}}</small>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div> --> -->
+                    <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-item text-center rounded overflow-hidden">
+                            <div class="rounded-circle overflow-hidden m-4">
+                                <img class="img-fluid" src="{% static 'img/team-2.jpg'%}" alt="">
+                            </div>
+                            <h5 class="mb-0">{{member.1}}</h5>
+                            <small>Designation</small>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="team-item text-center rounded overflow-hidden">
+                            <div class="rounded-circle overflow-hidden m-4">
+                                <img class="img-fluid" src="{% static 'img/team-3.jpg'%}" alt="">
+                            </div>
+                            <h5 class="mb-0">Full Name</h5>
+                            <small>Designation</small>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="team-item text-center rounded overflow-hidden">
+                            <div class="rounded-circle overflow-hidden m-4">
+                                <img class="img-fluid" src="{% static 'img/team-4.jpg'%}" alt="">
+                            </div>
+                            <h5 class="mb-0">Full Name</h5>
+                            <small>Designation</small>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div> -->
+                <!-- </div>
+            </div>
+        </div>
+         -->
+        <!-- Team End -->
+
+
+        <!-- Testimonial Start -->
+        <!-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="text-center">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
+                    <h1 class="mb-5">Our Clients Say!!!</h1>
+                </div>
+                <div class="owl-carousel testimonial-carousel">
+                    <div class="testimonial-item bg-transparent border rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{% static 'img/testimonial-1.jpg'%}" style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item bg-transparent border rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{% static 'img/testimonial-2.jpg'%}" style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item bg-transparent border rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{% static 'img/testimonial-3.jpg'%}" style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item bg-transparent border rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{% static 'img/testimonial-4.jpg'%}" style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Testimonial End
+        {%for Team in team %}
+        {{Team.fist_name}}
+        {%endfor%} -->
+        <div class="containerrr">
+            <div class="card">
+                <div class="header">
+                    <img src="https://assets.codepen.io/5126815/image-daniel.jpg" alt="Daniel Clifford" class="avatar">
+                    <div class="details">
+                        <div class="name">
+                            Daniel Clifford
+                        </div>
+                        <div class="status">
+                            Verified Graduate
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    I received a job offer mid-course, and the subjects I learned were current, if not more so, in the company I joined. I honestly feel I got every penny's worth.
+                </div>
+                <div class="quote">
+                    I was an EMT for many years before I joined the bootcamp. I've been looking to make a transition and have heard some people who had an amazing experience here. I signed up for the free intro course and found it incredibly fun! I enrolled shortly thereafter. The next 12 weeks was the best - and most grueling - time of my life. Since completing the course, I've successfully switched careers, working as a Software Engineer at a VR startup.
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="header">
+                    <img src="https://assets.codepen.io/5126815/image-jonathan.jpg" alt="Jonathan Walters" class="avatar">
+                    <div class="details">
+                        <div class="name">
+                            Jonathan Walters
+                        </div>
+                        <div class="status">
+                            Verified Graduate
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    The team was very supportive and kept me motivated
+                </div>
+                <div class="quote">
+                    I started as a total newbie with virtually no coding skills. I now work as a mobile engineer for a bit company. This was one of the best investments I've made in myself.
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="header">
+                    <img src="https://assets.codepen.io/5126815/image-jeanette.jpg" alt="Jeanette Harmon" class="avatar">
+                    <div class="details">
+                        <div class="name">
+                            Jeanette Harmon
+                        </div>
+                        <div class="status">
+                            Verified Graduate
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    An overall wonderful and rewarding experience
+                </div>
+                <div class="quote">
+                    Thank you for the wonderful experience! I now have a job I really enjoy, and make a good living while doing something I love.
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="header">
+                    <img src="https://assets.codepen.io/5126815/image-patrick.jpg" alt="Patrick Abrams" class="avatar">
+                    <div class="details">
+                        <div class="name">
+                            Patrick Abrams
+                        </div>
+                        <div class="status">
+                            Verified Graduate
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    Awesome teaching support from TAs who did the bootcamp themselves. Getting guidance from them and learning from their experience was easy.
+                </div>
+                <div class="quote">
+                    The staff seem genuinely concerned about my progress which I find really refreshing. The program gave me the confidence necessary to be able to go out in the world and present myself as a capable junior developer. The standard is above the rest. You will get the personal atention you need from an incredible community of smart and amazing people.
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="header">
+                    <img src="https://assets.codepen.io/5126815/image-kira.jpg" alt="Kira Whittle" class="avatar">
+                    <div class="details">
+                        <div class="name">
+                            Kira Whittle
+                        </div>
+                        <div class="status">
+                            Verified Graduate
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    Such a life-changing experience. Highly recommend!
+                </div>
+                <div class="quote">
+                    Before joining the bootcamp, I've never written a line of code. I needed some structure from professionals who can help me learn programming step by step. I was encouraged to enroll by a former student of theirs who can only say wonderful things about the program. The entire cirriculum and staff did not disappoint. They were very hands-on and I never had to wait long for assistance. The agile team project, in particular, was outstanding. It took my learning to the next level in a way that no tutoral could ever have. In fact, I've often referred to it during interviews as an example of my development experience. It certainly helped me land a job as a full-stack developoer after receiving multiple offers. 100% recommend!
+                </div>
+            </div>
+        </div>
+        <a style="position: relative;left: 80%;" class="btn btn-primary py-3 px-5 mt-2" href="http://localhost:8000/foodforall/review/">Read More</a>
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
+                        <a class="btn btn-link" href="http://localhost:8000/foodforall/about/">About Us</a>
+                        <a class="btn btn-link" href="http://localhost:8000/foodforall/contact/">Contact Us</a>
+                        <a class="btn btn-link" href="http://localhost:8000/foodforall/booking/">Reservation</a>
+                        <a class="btn btn-link" href="">Privacy Policy</a>
+                        <a class="btn btn-link" href="">Terms & Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>customercarerestoran@.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+                        <h5 class="text-light fw-normal">Monday - Saturday</h5>
+                        <p>09AM - 09PM</p>
+                        <h5 class="text-light fw-normal">Sunday</h5>
+                        <p>10AM - 08PM</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
+                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    <!-- {% load static %} -->
+    <!-- JavaScript Libraries -->
+    <script src="{% static 'jquery-3.4.1.min.js'%}"></script>
+    <script src="{% static 'bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'wow.min.js'%}"></script>
+    <script src="{% static 'easing.min.js'%}"></script>
+    <script src="{% static 'waypoints.min.js'%}"></script>
+    <script src="{% static 'counterup.min.js'%}"></script>
+    <script src="{% static 'owl.carousel.min.js'%}"></script>
+    <script src="{% static 'tempusdominus/js/moment.min.js'%}"></script>
+    <script src="{% static 'tempusdominus/js/moment-timezone.min.js'%}"></script>
+    <script src="{% static 'js/tempusdominus-bootstrap-4.min.js'%}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="{% static 'main.js'%}"></script>
+    <script>
+
+const sliders = [...document.querySelectorAll(".slider__container")];
+const sliderControlPrev = [...document.querySelectorAll(".slider__control.prev")];
+const sliderControlNext = [...document.querySelectorAll(".slider__control.next")];
+
+sliders.forEach((slider, i) => {
+  let isDragStart = false,
+      isDragging = false,
+      isSlide = false,
+      prevPageX,
+      prevScrollLeft,
+      positionDiff;
+
+  const sliderItem = slider.querySelector(".slider__item");
+  var isMultislide = (slider.dataset.multislide === 'true');
+
+  sliderControlPrev[i].addEventListener('click', () => {
+    if (isSlide) return;
+    isSlide = true;
+    let slideWidth = isMultislide ? slider.clientWidth : sliderItem.clientWidth;
+    slider.scrollLeft += -slideWidth;
+    setTimeout(function(){ isSlide = false; }, 700);
+  });
+
+  sliderControlNext[i].addEventListener('click', () => {
+    if (isSlide) return;
+    isSlide = true;
+    let slideWidth = isMultislide ? slider.clientWidth : sliderItem.clientWidth ;
+    slider.scrollLeft += slideWidth;
+    setTimeout(function(){ isSlide = false; }, 700);
+  });
+
+  function autoSlide() {
+    if(slider.scrollLeft - (slider.scrollWidth - slider.clientWidth) > -1 || slider.scrollLeft <= 0) return;
+    positionDiff = Math.abs(positionDiff);
+    let slideWidth = isMultislide ? slider.clientWidth : sliderItem.clientWidth;
+    let valDifference = slideWidth - positionDiff;
+    if(slider.scrollLeft > prevScrollLeft) {
+        return slider.scrollLeft += positionDiff > slideWidth / 5 ? valDifference : -positionDiff;
+    }
+    slider.scrollLeft -= positionDiff > slideWidth / 5 ? valDifference : -positionDiff;
+  }
+
+  function dragStart(e) {
+    if (isSlide) return;
+    isSlide = true;
+    isDragStart = true;
+    prevPageX = e.pageX || e.touches[0].pageX;
+    prevScrollLeft = slider.scrollLeft;
+    setTimeout(function(){ isSlide = false; }, 700);
+  }
+
+  function dragging(e) {
+    if(!isDragStart) return;
+    e.preventDefault();
+    isDragging = true;
+    slider.classList.add("dragging");
+    positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+    slider.scrollLeft = prevScrollLeft - positionDiff;
+  }
+
+  function dragStop() {
+    isDragStart = false;
+    slider.classList.remove("dragging");
+    if(!isDragging) return;
+    isDragging = false;
+    autoSlide();
+  }
+
+  addEventListener("resize", autoSlide);
+  slider.addEventListener("mousedown", dragStart);
+  slider.addEventListener("touchstart", dragStart);
+  slider.addEventListener("mousemove", dragging);
+  slider.addEventListener("touchmove", dragging);
+  slider.addEventListener("mouseup", dragStop);
+  slider.addEventListener("touchend", dragStop);
+  slider.addEventListener("mouseleave", dragStop);
+});
+
+       
+       function validation(){
+           let femail = document.getElementById('email').value 
+       let mailregex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+           let fname = document.getElementById('name').value 
+       let nameregex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+       let dregex = /^\d\d\d\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$/
+       let date = document.getElementById('datetime').value 
+       if (fname==""){
+           document.querySelector('small').innerHTML="THIS IS A REQUIRED FIELD"
+           return false;
+       }
+       if (fname.length<3 ){
+           document.querySelector('small').innerHTML="ENTERED NAME IS TO SHORT"
+           return false;
+       }
+       if (fname.length>25 ){
+           document.querySelector('small').innerHTML="ENTERED NAME IS TO LONG"
+           return false;
+       }
+       // if(!fname.match(nameregex)){
+       //     document.querySelector('small').innerHTML="ONLY ALPHABETS ALLOWED"
+       //     return false
+       // }
+       if (femail == "" ){
+           document.getElementById('emailerror').innerHTML="THIS IS A REQUIRED FIELD"
+           return false;
+       }
+      
+      if(!femail.match(mailregex)){
+       document.getElementById('emailerror').innerHTML="PLEASE ENTER A VALID EMAIL"
+           return false;
+       }
+       if (date == "" ){
+           document.getElementById('dterror').innerHTML="THIS IS A REQUIRED FIELD"
+           return false;
+       }
+       else{
+           return true
+       }
+   }
+
+
+      
+   
+    </script>
+</body>
+
+</html>
